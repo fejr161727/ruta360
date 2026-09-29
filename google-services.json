@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "294456157589",
+    "project_id": "ruta360-1074e",
+    "storage_bucket": "ruta360-1074e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:294456157589:android:7df91e3116f15498ba429c",
+        "android_client_info": {
+          "package_name": "ec.ruta360.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8BECSEAnmGIpLzMswHNAZJ5QbJTPLY-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
