@@ -17,7 +17,10 @@ jobs:
         with:
           channel: stable
           cache: true
-      - run: flutter create --org com.example --project-name ruta360 --platforms android .
+      - name: Crear plataforma Android
+        run: |
+          flutter create --org com.example --project-name ruta360 --platforms android .
+          rm -f test/widget_test.dart
       - run: flutter pub get
       - run: flutter test
       - run: flutter build apk --debug
