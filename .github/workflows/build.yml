@@ -8,19 +8,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Descomprimir codigo
+      - name: Descomprimir ultimo ZIP
         run: |
-          shopt -s nullglob
-          for z in ruta360_fase*.zip; do unzip -o "$z" -d _unz; done
+          Z=$(ls ruta360_fase*.zip | sort -V | tail -1)
+          echo "Usando $Z"
+          rm -rf _unz
+          unzip -o "$Z" -d _unz
           cp -r _unz/ruta360/. .
+      - name: Verificar google-services.json
+        run: test -f google-services.json || (echo "Falta google-services.json en la raiz" && exit 1)
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
           cache: true
       - name: Crear plataforma Android
         run: |
-          flutter create --org com.example --project-name ruta360 --platforms android .
+          flutter create --org ec.ruta360 --project-name ruta360 --platforms android .
           rm -f test/widget_test.dart
+          python3 tool/patch_android.py
       - run: flutter pub get
       - run: flutter test
       - run: flutter build apk --debug
